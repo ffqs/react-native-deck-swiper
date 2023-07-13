@@ -123,6 +123,10 @@ class Swiper extends Component {
       onMoveShouldSetPanResponder: (event, gestureState) => false,
 
       onMoveShouldSetPanResponderCapture: (evt, gestureState) => {
+        if (!this.props.verticalSwipe && !this.props.horizontalSwipe) {
+          return false
+        }
+
         const isVerticalSwipe = Math.sqrt(
           Math.pow(gestureState.dx, 2) < Math.pow(gestureState.dy, 2)
         )
